@@ -1,0 +1,49 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <div class="info">
+    <h1>Vehicle</h1>
+    <img src="<%= customer.coverImagePath %>" alt="" />
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td>owner</td>
+          <td><%= customer.firstName %> <%= customer.lastName %></td>
+        </tr>
+        <tr>
+          <td>Number</td>
+          <td><%= vehicle.number %></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><%= vehicle.name %></td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td><%= vehicle.color %></td>
+        </tr>
+        <tr>
+          <td>RoadWorthy Starts on</td>
+          <td><%= new Date(vehicle.rwStart).toISOString().split("T")[0] %></td>
+        </tr>
+        <tr>
+          <td>RoadWorthy Renews on</td>
+          <td><%= new Date(vehicle.rwRenew).toISOString().split("T")[0] %></td>
+        </tr>
+        <tr>
+          <td>Insurance Type</td>
+          <td><%= vehicle.insType %></td>
+        </tr>
+        <tr>
+          <td>Insurance Company</td>
+          <td><%= vehicle.insCompany %></td>
+        </tr>
+        <tr>
+          <td>Since</td>
+          <td>
+            <%= new Date(vehicle.createdAt).toISOString().split("T")[0] %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

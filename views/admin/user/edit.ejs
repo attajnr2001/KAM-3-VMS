@@ -1,0 +1,24 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <h1 class="heading">EDIT USER</h1>
+
+  <div class="userForm editForm">
+    <form action="/admin/dashboard/<%= user.status %>/<%= user._id %>/editUser/<%= _user._id %>" method="post">
+      <div class="my-3">
+        <label class="form-label">Role</label>
+        <select name="userRole" class="form-select">
+          <option value="admin" <% if (_user.role === 'admin') { %>selected<% } %>>Admin</option>
+          <option value="supervisor" <% if (_user.role === 'supervisor') { %>selected<% } %>>Supervisor</option>
+        </select>
+      </div>
+      <div class="my-3">
+        <label class="form-label">Status</label>
+        <select name="status" class="form-select">
+          <option value="active" <% if (_user.status === 'active') { %>selected<% } %>>Active</option>
+          <option value="inactive" <% if (_user.status === 'inactive') { %>selected<% } %>>Inactive</option>
+        </select>
+      </div>
+      <button class="btn btn-secondary" type="submit">Update</button>
+    </form>
+  </div>
+</main>

@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  font-family: poppins;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.bigLogo {
+  width: 10%;
+  height: 10%;
+}
+
+._container {
+  min-height: 100vh;
+}
+
+._outer {
+  padding: 1em;
+  margin: 1em auto;
+}
+._outer ._inner ._top {
+  text-align: center;
+}
+._outer ._inner ._top .heading {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #82001a;
+}
+
+._navbarOuter {
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.5725490196);
+}
+._navbarOuter ._navbarInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+._navbarOuter ._navbarInner i {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+._navbarOuter ._navbarInner .left {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+._navbarOuter ._navbarInner .right {
+  min-height: 100vh;
+  background: #333;
+  width: 70%;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 0.4s all;
+  padding: 0.5em;
+}
+._navbarOuter ._navbarInner .right .bi-x-square-fill {
+  float: right;
+  color: #fff;
+}
+._navbarOuter ._navbarInner .right ul {
+  margin: 2em auto;
+  padding: 0.5em;
+}
+._navbarOuter ._navbarInner .right ul li {
+  line-height: 2.3em;
+}
+._navbarOuter ._navbarInner .right ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+._navbarOuter ._navbarInner .right ul li a i {
+  color: #fff;
+  margin-right: 0.4em;
+}
+
+.main {
+  width: 95%;
+  margin: 1em auto;
+}
+.main .model {
+  height: 50vh;
+  overflow: scroll;
+}
+.main .model .headings .top {
+  margin: 2em auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .model .headings .top h1 {
+  color: #82001a;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+}
+.main .model .headings .top form {
+  display: flex;
+  gap: 0.3em;
+}
+.main .model .headings .down form {
+  display: flex;
+  gap: 0.5em;
+}
+.main .model .content .each {
+  margin-bottom: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.main .model .content .each .left {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main .model .content .each .left img {
+  border-radius: 50%;
+  border: 4px solid rgba(128, 128, 128, 0.2549019608);
+  margin-right: 0.5em;
+}
+.main .model .content .each .left p {
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: bold;
+}
+.main .model .content .each .left span {
+  font-weight: bold;
+  color: #82001a;
+  font-size: 0.8em;
+}
+.main .model .content .each .right {
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+}
+.main .model .content .each .right .buttons {
+  display: flex;
+}
+.main .model .content .each .right .buttons .bi-trash3 {
+  color: red;
+}
+.main .model .content .each .right .buttons a button,
+.main .model .content .each .right .buttons form button {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.main .model .content .each .right .buttons a i,
+.main .model .content .each .right .buttons form i {
+  border-radius: 0.2em;
+  padding: 0.3em;
+  font-size: larger;
+}
+.main .model .content .each .right .buttons a .bi-eye-fill,
+.main .model .content .each .right .buttons form .bi-eye-fill {
+  color: green;
+}
+.main .model .content .each .right .buttons a .bi-pencil-square,
+.main .model .content .each .right .buttons form .bi-pencil-square {
+  color: blue;
+}
+.main .model .content .each .right .buttons a .bi-person-lock,
+.main .model .content .each .right .buttons form .bi-person-lock {
+  color: red;
+}
+
+.heading {
+  margin-top: 3em;
+  text-align: center;
+  font-size: 1.3em;
+  color: #82001a;
+  font-weight: bold;
+}
+
+.newForm label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.main .info {
+  text-align: center;
+}
+.main .info h1 {
+  color: #82001a;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+}
+.main .info img {
+  width: 300px;
+  height: 350px;
+  border: 4px solid rgba(128, 128, 128, 0.2549019608);
+}
+.main .info .content span {
+  color: #82001a;
+  font-weight: bold;
+}
+.main .info .content span h2 {
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}/*# sourceMappingURL=main.css.map */

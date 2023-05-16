@@ -1,0 +1,59 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <div class="heading">EDIT VEHICLE</div>
+
+  <div class="vehicleForm editForm">
+    <form action="/admin/dashboard/<%= user.role %>/<%= user._id %>/editVehicle/<%= vehicle._id %>" method="post">
+      <div class="my-3">
+        <label class="form-label">Owner</label>
+        <select name="owner" class="form-select">
+          <% customers.forEach((customer) => { %>
+            <option value="<%= customer._id %>" <%= customer._id.toString() === owner._id.toString() ? "selected" : "" %>>
+              <%= customer.firstName %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label">Number</label>
+        <input type="text" name="number" value="<%= vehicle.number %>" class="form-control" />
+      </div>
+
+      <div class="my-3">
+        <label class="form-label">Brand</label>
+        <input type="text" name="name" value="<%= vehicle.name %>" class="form-control" />
+      </div>
+
+      <div class="my-3">
+        <label class="form-label">Color</label>
+        <input type="text" name="color" value="<%= vehicle.color %>" class="form-control" />
+      </div>
+
+      <hr />
+
+      <div class="my-3">
+        <label class="form-label">RoadWorthy Starts</label>
+        <input type="date" id="issueDate" value="<%= new Date(vehicle.rwStart).toISOString().split('T')[0] %>" name="rwStart" class="form-control" />
+      </div>
+
+      <div class="my-3">
+        <label class="form-label">RoadWorthy Renew on</label>
+        <input type="date" id="lRenewOne" value="<%= new Date(vehicle.rwRenew).toISOString().split('T')[0] %>" name="rwRenew" class="form-control" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Insurance Type</label>
+        <select name="insType" class="form-select">
+          <option value="Life" <% if (vehicle.insType === "Life") { %>selected<% } %>>Life</option>
+          <option value="Property" <% if (vehicle.insType === "Property") { %>selected<% } %>>Property</option>
+        </select>
+      </div>
+      <div class="my-3">
+        <label class="form-label">Insurance Company</label>
+        <input type="text" value="<%= vehicle.insCompany %>"  name="insCompany" class="form-control" />
+      </div>
+
+      <button class="btn btn-secondary" type="submit">Update</button>
+    </form>
+  </div>
+</main>

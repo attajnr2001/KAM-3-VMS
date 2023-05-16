@@ -1,0 +1,49 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <h1 class="heading">ADD USER</h1>
+
+  <div class="userForm newForm">
+    <%- include("../../partials/messages.ejs") %>
+    <form
+      action="/admin/dashboard/<%= user.role %>/<%= user._id %>/newUser"
+      method="post"
+    >
+      <div class="my-3">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" name="firstName" />
+      </div>
+      <div class="my-3s">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lastName" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="password2" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" name="phone" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" name="dob" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Date of Birth</label>
+        <select name="userRole" class="form-select">
+          <option value="admin">Admin</option>
+          <option value="supervisor">Supervisor</option>
+        </select>
+      </div>
+      <button class="btn btn-secondary w-100" type="submit">Add</button>
+    </form>
+  </div>
+</main>

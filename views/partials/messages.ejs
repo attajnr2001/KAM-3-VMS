@@ -1,0 +1,71 @@
+<% if (typeof errors != "undefined") { %> <% errors.forEach(function(error) {%>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error.msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% }) %> <% } %> <% if (success_msg != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= success_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (error_msg != "") { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (error != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (deleteUserSuccess != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= deleteUserSuccess %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (deleteUserError != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= deleteUserError %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (inactive != "") { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= inactive %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>

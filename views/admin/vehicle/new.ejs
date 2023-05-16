@@ -1,0 +1,66 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <h1 class="heading">ADD VEHICLE</h1>
+
+  <div class="vehicleForm newForm">
+    <%- include("../../partials/messages.ejs") %>
+    <form
+      action="/admin/dashboard/<%= user.role %>/<%= user._id %>/newVehicle"
+      method="post"
+    >
+      <div class="my-3">
+        <label class="form-label">Customer</label>
+        <select name="owner" id="owner" class="form-select">
+          <% customers.forEach(owner => { %> <% if (owner.id === vehicle.owner)
+          { %>
+          <option
+            selected
+            label="<%= owner.firstName %> <%= owner.lastName %>"
+            value="<%= owner.id %>"
+          ></option>
+          <% } else {%>
+          <option
+            label="<%= owner.firstName %> <%= owner.lastName %>"
+            value="<%= owner.id %>"
+          ></option>
+          <% } %> <% }); %>
+        </select>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label">Number</label>
+        <input type="text" name="number" class="form-control" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Brand</label>
+        <input type="text" name="name" class="form-control" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Color</label>
+        <input type="text" name="color" class="form-control" />
+      </div>
+      <hr />
+      <div class="my-3">
+        <label class="form-label">RoadWorthy Starts</label>
+        <input type="date" id="issueDate" name="rwStart" class="form-control" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">RoadWorthy Renew on</label>
+        <input type="date" id="lRenewOne" name="rwRenew" class="form-control" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Insurance Type</label>
+        <select name="insType" class="form-select">
+          <option value="Life">Life</option>
+          <option value="Property">Property</option>
+        </select>
+      </div>
+      <div class="my-3">
+        <label class="form-label">Insurance Company</label>
+        <input type="text" name="insCompany" class="form-control" />
+      </div>
+
+      <button type="submit" class="w-100 btn btn-secondary">Add Vehicle</button>
+    </form>
+  </div>
+</main>

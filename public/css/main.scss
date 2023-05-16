@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+$color1: #82001a;
+$color2: #333;
+
+* {
+  font-family: poppins;
+  margin: 0;
+  padding: 0;
+  color: $color2;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+.bigLogo {
+  width: 10%;
+  height: 10%;
+}
+
+._container {
+  min-height: 100vh;
+}
+
+._outer {
+  padding: 1em;
+  margin: 1em auto;
+  ._inner {
+    ._top {
+      text-align: center;
+
+      .heading {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.5em;
+        color: $color1;
+      }
+    }
+  }
+}
+
+// navbar
+._navbarOuter {
+  box-shadow: 0 0 5px #80808092;
+  ._navbarInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    i {
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+
+    .left {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5em;
+    }
+
+    .right {
+      min-height: 100vh;
+      background: $color2;
+      width: 70%;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      transition: 0.4s all;
+      padding: 0.5em;
+
+      .bi-x-square-fill {
+        float: right;
+        color: #fff;
+      }
+
+      ul {
+        margin: 2em auto;
+        padding: 0.5em;
+        li {
+          line-height: 2.3em;
+          a {
+            text-decoration: none;
+            color: #fff;
+
+            i {
+              color: #fff;
+              margin-right: 0.4em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// dashboard
+.main {
+  width: 95%;
+  margin: 1em auto;
+
+  .model {
+    height: 50vh;
+    overflow: scroll;
+    .headings {
+      .top {
+        margin: 2em auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+          color: $color1;
+          font-size: 1.2em;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        form {
+          display: flex;
+          gap: 0.3em;
+        }
+      }
+
+      .down {
+        form {
+          display: flex;
+          gap: 0.5em;
+        }
+      }
+    }
+
+    .content {
+      .each {
+        margin-bottom: 1.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .left {
+          display: flex;
+          width: fit-content;
+
+          img {
+            border-radius: 50%;
+            border: 4px solid #80808041;
+            margin-right: 0.5em;
+          }
+
+          p {
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: bold;
+          }
+
+          span {
+            font-weight: bold;
+            color: $color1;
+            font-size: 0.8em;
+          }
+        }
+
+        .right {
+          width: fit-content;
+          white-space: nowrap;
+
+          .buttons {
+            display: flex;
+
+            .bi-trash3 {
+              color: red;
+            }
+            a,
+            form {
+              button {
+                outline: none;
+                border: none;
+                background: transparent;
+              }
+              i {
+                border-radius: 0.2em;
+                padding: 0.3em;
+                font-size: larger;
+              }
+              .bi-eye-fill {
+                color: green;
+              }
+              .bi-pencil-square {
+                color: blue;
+              }
+
+              .bi-person-lock {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// new Customer
+.heading {
+  margin-top: 3em;
+  text-align: center;
+  font-size: 1.3em;
+  color: $color1;
+  font-weight: bold;
+}
+
+.newForm {
+  label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+}
+
+// view Customer
+.main {
+  .info {
+    text-align: center;
+
+    h1 {
+      color: $color1;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 0;
+    }
+    img {
+      width: 300px;
+      height: 350px;
+      border: 4px solid #80808041;
+    }
+    .content {
+      span {
+        color: $color1;
+        font-weight: bold;
+
+        h2 {
+          color: $color2;
+          font-size: 1.2em;
+          font-weight: 600;
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}

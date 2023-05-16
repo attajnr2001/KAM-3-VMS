@@ -1,0 +1,92 @@
+<%- include("./../../partials/navbar.ejs") %>
+<main class="main">
+  <div class="info">
+    <h1>Customer</h1>
+    <img src="<%= customer.coverImagePath %>" alt="" />
+
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td>First Name</td>
+          <td><%= customer.firstName %></td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><%= customer.lastName %></td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td><%= customer.phone %></td>
+        </tr>
+        <tr>
+          <td>Whatsapp</td>
+          <td><%= customer.whatsapp %></td>
+        </tr>
+        <tr>
+          <td>Company</td>
+          <td><%= customer.company %></td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td><%= new Date(customer.dob).toLocaleDateString()%></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td><%= new Date(customer.gender).toLocaleDateString()%></td>
+        </tr>
+        <tr>
+          <td>License Class</td>
+          <td><%= customer.lClass %></td>
+        </tr>
+        <tr>
+          <td>License No.</td>
+          <td><%= customer.lNo %></td>
+        </tr>
+        <tr>
+          <td>Reference No.</td>
+          <td><%= customer.refNo %></td>
+        </tr>
+        <tr>
+          <td>Issue Date</td>
+          <td><%= new Date(customer.issueDate).toLocaleDateString() %></td>
+        </tr>
+        <tr>
+          <td>1st Renew On</td>
+          <td><%= new Date(customer.lRenewOne).toLocaleDateString() %></td>
+        </tr>
+        <tr>
+          <td>2nd Renew On</td>
+          <td><%= new Date(customer.lRenewTwo).toLocaleDateString() %></td>
+        </tr>
+        <tr>
+          <td>Expires on</td>
+          <td><%= new Date(customer.lExpiry).toLocaleDateString() %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% vehicle.forEach((v) => { %> <% if (v.owner.toString() ===
+        customer._id.toString()) { %>
+        <tr>
+          <td><%= v.name %></td>
+          <td>
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/viewVehicle/<%= v._id %>"
+              ><%= v.number %></a
+            >
+          </td>
+        </tr>
+        <% } %> <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>

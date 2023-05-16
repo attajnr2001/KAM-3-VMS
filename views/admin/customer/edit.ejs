@@ -1,0 +1,131 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <h1 class="heading">EDIT CUSTOMER</h1>
+
+  <div class="customerForm editForm">
+    <form
+      action="/admin/dashboard/<%= user.role %>/<%= user._id %>/editCustomer/<%= customer._id %>"
+      method="post"
+    >
+      <div class="my-3">
+        <label class="form-label">Picture</label>
+        <input type="file" name="cover" class="filepond" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          value="<%= customer.firstName %>"
+        />
+      </div>
+      <div class="my-3s">
+        <label class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          value="<%= customer.lastName %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Phone</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phone"
+          value="<%= customer.phone %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Whatsapp</label>
+        <input
+          type="text"
+          class="form-control"
+          name="whatsapp"
+          value="<%= customer.whatsapp %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Company</label>
+        <input
+          type="text"
+          value="<%= customer.company %>"
+          class="form-control"
+          name="company"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" name="dob" value="<%= new
+        Date(customer.dob).toISOString().split("T")[0] %>" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Gender</label>
+        <select name="gender" class="form-select">
+          <% if (customer.gender == "male") { %>
+          <option selected value="male">Male</option>
+          <% } else {%>
+          <option selected value="female">Female</option>
+          <% } %>
+        </select>
+      </div>
+      <hr />
+      <div class="my-3">
+        <label class="form-label">License Class</label>
+        <select name="lClass" class="form-control">
+          <% if (customer.lClass === "a" || customer.lClass === "A") { %>
+          <option selected value="A">A</option>
+          <% } else if(customer.lClass === "b" || customer.lClass === "B"){%>
+          <option selected value="B">B</option>
+          <% } %>
+        </select>
+      </div>
+      <div class="my-3">
+        <label class="form-label">License No.</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lNo"
+          value="<%= customer.lNo %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Reference No.</label>
+        <input
+          type="text"
+          class="form-control"
+          name="refNo"
+          value="<%= customer.refNo %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Issue Date</label>
+        <input id="issueDate" type="date" class="form-control" name="issueDate"
+        value="<%= new Date(customer.issueDate).toISOString().split("T")[0] %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">1st Renew Date</label>
+        <input id="lRenewOne" type="date" class="form-control" name="lRenewOne"
+        value="<%= new Date(customer.lRenewOne).toISOString().split("T")[0] %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">2nd Renew Date</label>
+        <input id="lRenewTwo" type="date" class="form-control" name="lRenewTwo"
+        value="<%= new Date(customer.lRenewTwo).toISOString().split("T")[0] %>"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Expiry Date</label>
+        <input id="lExpiry" type="date" class="form-control" name="lExpiry"
+        value="<%= new Date(customer.lExpiry).toISOString().split("T")[0] %>" />
+      </div>
+      <button type="submit" class="w-100 btn btn-secondary">
+        Update Customer
+      </button>
+    </form>
+  </div>
+</main>

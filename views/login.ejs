@@ -1,0 +1,40 @@
+<div class="_outer">
+  <div class="_inner">
+    <div class="_top">
+      <img class="bigLogo" src="/assets/preview.png" alt="" />
+      <h1 class="heading">
+        Kam 3 <br />
+        Login Page
+        <hr />
+      </h1>
+    </div>
+
+    <div class="down">
+      <form action="/login" method="post">
+        <%- include("./partials/messages.ejs") %>
+        <div class="my-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="my-3">
+          <label for="username" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <button class="btn btn-secondary px-5" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
