@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const passport = require("passport");
@@ -29,6 +30,8 @@ router.post("/login", async (req, res, next) => {
     });
   }
 });
+
+// Create a transporter using the SMTP details
 
 // createUser(
 //   "Atta",
