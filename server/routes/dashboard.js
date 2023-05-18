@@ -19,8 +19,10 @@ router.get("/:role/:_id", ensureAuthenticated, async (req, res) => {
 
   let searchQuery = req.query.search;
   if (searchQuery) {
-    customer = customer.filter((elt) =>
-      elt.firstName.toLowerCase().includes(searchQuery.toLowerCase())
+    customer = customer.filter(
+      (elt) =>
+        elt.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        elt.lastName.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }
 
@@ -44,40 +46,6 @@ router.get("/:role/:_id", ensureAuthenticated, async (req, res) => {
   } else {
     req.flash("inactive", "You have been deactivated");
     res.redirect(`/`);
-  }
-});
-
-/**
- * customer routes starts here
- */
-
-router.get("/:role/:_id/search", ensureAuthenticated, async (req, res) => {
-  const searchQuery = req.query.search;
-
-  try {
-    // Find customers whose firstName or lastName matches the search query
-    const customer = await Customer.find({
-      $or: [
-        { firstName: { $regex: searchQuery, $options: "i" } },
-        { lastName: { $regex: searchQuery, $options: "i" } },
-      ],
-    });
-
-    const vehicle = await Vehicle.find({}).sort({ number: 1 });
-    const user = await User.find({}).sort({ firstName: 1 });
-    const users = await User.find({}).sort({ status: 1, firstName: 1 });
-
-    // Render the "admin/dashboard" view with the search results
-    res.render("admin/dashboard", {
-      title: "KAM 3 VMS",
-      user: user,
-      users: users,
-      customer: customer,
-      vehicle: vehicle,
-    });
-  } catch (error) {
-    console.error(error);
-    // Handle any potential errors that may occur
   }
 });
 
@@ -641,10 +609,103 @@ router.post(
   }
 );
 
+router.get("/:role/:_id/profile", ensureAuthenticated, async (req, res) => {
+  let { role, _id } = req.params;
+
+  // Find the user based on the role and _id
+  user = await User.findOne({ role: role, _id: _id });
+
+  try {
+    res.render("admin/user/profile", {
+      title: "KAM 3 VMS",
+      user: user,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/:role/:_id/profile", ensureAuthenticated, async (req, res) => {
+  let { role, _id } = req.params;
+  const errors = [];
+
+  // Find the user based on the role and _id
+  const user = await User.findOne({ role: role, _id: _id });
+
+  let { firstName, lastName, email, password2, password, phone, dob } =
+    req.body;
+
+  if (password2 != password) {
+    errors.push({ msg: "Password do not match" });
+  }
+
+  let hashedPassword;
+  if (password.length > 0) {
+    hashedPassword = await bcrypt.hash(password, 10);
+  } else {
+    hashedPassword = user.password;
+  }
+
+  if (errors.length > 0) {
+    res.render("admin/user/profile", {
+      title: "KAM 3 VMS",
+      errors,
+      user: user,
+    });
+  } else {
+    try {
+      await User.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: hashedPassword,
+            phone: phone,
+            dob: dob,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
+
 router.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) throw err;
   });
   res.redirect("/");
+});
+
+router.get("/:role/:_id/alerts", ensureAuthenticated, async (req, res) => {
+  const { role, _id } = req.params;
+
+  try {
+    const user = await User.findById({ _id: _id });
+
+    // Retrieve datetime value from "http://worldtimeapi.org/api/ip"
+    const response = await axios.get("http://worldtimeapi.org/api/ip");
+    const { utc_datetime } = response.data;
+
+    // Find customers with lRenew value less than the retrieved datetime
+    const customers = await Customer.find({
+      $or: [{ lRenewOne: { $lt: utc_datetime } }],
+    });
+    const vehicles = await Vehicle.find({
+      $or: [{ rwRenew: { $lt: utc_datetime } }],
+    });
+
+    res.render("admin/alerts", {
+      title: "KAM 3 VMS",
+      user: user,
+      customers: customers,
+      vehicles: vehicles,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 module.exports = router;

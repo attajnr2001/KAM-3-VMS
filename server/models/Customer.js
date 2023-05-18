@@ -65,12 +65,12 @@ const customerSchema = mongoose.Schema({
 
   lRenewTwo: {
     type: Date,
-    required: true,
+    required: false,
   },
 
   lExpiry: {
     type: Date,
-    required: true,
+    required: false,
   },
 
   dob: {

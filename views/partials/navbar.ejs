@@ -10,13 +10,20 @@
         <i onclick="closeMenu()" class="bi bi-x-square-fill"></i>
         <ul class="list">
           <li>
+            <a href="javascript:history.back()"
+              ><i class="bi bi-skip-backward"></i>Back</a
+            >
+          </li>
+          <li>
             <a href="/"><i class="bi bi-people"></i>Customers</a>
           </li>
           <li>
             <a href="/"><i class="bi bi-truck-front"></i>Vehicles</a>
           </li>
           <li>
-            <a href="/"><i class="bi bi-person-gear"></i>My Profile</a>
+            <a href="/admin/dashboard/<%= user.role %>/<%= user._id %>/profile"
+              ><i class="bi bi-person-gear"></i>My Profile</a
+            >
           </li>
           <li>
             <a href="/admin/dashboard/logout"

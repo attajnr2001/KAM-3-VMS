@@ -1,0 +1,98 @@
+<%- include("../partials/navbar.ejs") %>
+
+<main class="main">
+  <section class="model">
+    <div class="headings">
+      <div class="top">
+        <h1>Customers</h1>
+      </div>
+    </div>
+
+    <div class="content my-5">
+      <% customers.forEach(elt => { %>
+      <div class="customer each">
+        <div class="left">
+          <img
+            width="50px"
+            height="50px"
+            src="<%= elt.coverImagePath %>"
+            alt="pic"
+          />
+          <div class="det">
+            <p class="name"><%= elt.firstName %> <%= elt.lastName %></p>
+            <span class="createdAt"
+              ><%= new Date(elt.createdAt).toLocaleDateString() %></span
+            >
+          </div>
+        </div>
+        <div class="right">
+          <div class="buttons">
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/viewCustomer/<%= elt._id %>"
+              ><i class="bi bi-eye-fill"></i
+            ></a>
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/editCustomer/<%= elt._id %>"
+              ><i class="bi bi-pencil-square"></i
+            ></a>
+
+            <form
+              action="/admin/dashboard/<%= user.role %>/<%= user._id %>/deleteCustomer/<%= elt._id %>"
+              method="post"
+            >
+              <button type="submit"><i class="bi bi-trash3"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="vehicles model">
+    <div class="headings">
+      <div class="top">
+        <h1>
+          Vehicles
+          <a
+            href="/admin/dashboard/<%= user.role %>/<%= user._id %>/newVehicle"
+          >
+            <i class="bi bi-plus-square"></i
+          ></a>
+        </h1>
+      </div>
+    </div>
+
+    <div class="content my-5">
+      <% vehicles.forEach(elt => { %>
+      <div class="vehicle each">
+        <div class="left">
+          <div class="det">
+            <p class="name"><%= elt.number %></p>
+            <span class="createdAt"
+              ><%= new Date(elt.createdAt).toISOString().split("T")[0] %></span
+            >
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="buttons">
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/viewCustomer/<%= elt.owner %>"
+              ><i class="bi bi-person-lock"></i
+            ></a>
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/viewVehicle/<%= elt._id %>"
+              ><i class="bi bi-eye-fill"></i
+            ></a>
+            <a
+              href="/admin/dashboard/<%= user.role %>/<%= user._id %>/editVehicle/<%= elt._id %>"
+              ><i class="bi bi-pencil-square"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+</main>

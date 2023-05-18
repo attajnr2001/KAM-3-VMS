@@ -1,0 +1,64 @@
+<%- include("../../partials/navbar.ejs") %>
+<main class="main">
+  <h1 class="heading">MY PROFILE</h1>
+
+  <div class="userForm newForm">
+    <%- include("../../partials/messages.ejs") %>
+    <form
+      action="/admin/dashboard/<%= user.role %>/<%= user._id %>/profile"
+      method="post"
+    >
+      <div class="my-3">
+        <label class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          value="<%= user.firstName %>"
+        />
+      </div>
+      <div class="my-3s">
+        <label class="form-label">Last Name</label>
+        <input
+          value="<%= user.lastName %>"
+          type="text"
+          class="form-control"
+          name="lastName"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          value="<%= user.email %>"
+          class="form-control"
+          name="email"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Password</label>
+        <input value="" type="password" class="form-control" name="password" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="password2" />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Phone</label>
+        <input
+          value="<%= user.phone %>"
+          type="text"
+          class="form-control"
+          name="phone"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" value="<%= new
+        Date(user.dob).toISOString().split("T")[0] %>" class="form-control"
+        name="dob" />
+      </div>
+      <button class="btn btn-secondary w-100" type="submit">Update</button>
+    </form>
+  </div>
+</main>
