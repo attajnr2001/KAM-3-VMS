@@ -52,6 +52,8 @@ ul {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
+  width: 100%;
+  align-items: center;
 }
 ._navbarOuter ._navbarInner .right {
   min-height: 100vh;
@@ -216,4 +218,16 @@ ul {
   font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 1em;
+}
+
+@media (min-width: 600px) {
+  ._outer {
+    width: 600px;
+  }
+  ._outer ._inner {
+    width: 100%;
+  }
+  .headings {
+    max-width: 600px;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -2,7 +2,7 @@
   <div class="_navbarOuter">
     <div class="_navbarInner">
       <div class="left">
-        <img width="6%" height="6%" src="/assets/preview.png" alt="pic" />
+        <img width="30px" height="50px" src="/assets/preview.png" alt="pic" />
         <i onclick="openMenu()" class="bi bi-three-dots-vertical"></i>
       </div>
 
@@ -10,7 +10,7 @@
         <i onclick="closeMenu()" class="bi bi-x-square-fill"></i>
         <ul class="list">
           <li>
-            <a href="javascript:history.back()"
+            <a href="/admin/dashboard/<%= user.role %>/<%= user._id %>"
               ><i class="bi bi-skip-backward"></i>Back</a
             >
           </li>
